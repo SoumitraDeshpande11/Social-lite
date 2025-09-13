@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialTech - Connect Authentically</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>SocialTech</h1>
+            <p>Helping youth make genuine connections</p>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav-tabs">
+            <button class="tab-btn active" onclick="showTab('profile')">Profile</button>
+            <button class="tab-btn" onclick="showTab('discover')">Discover</button>
+            <button class="tab-btn" onclick="showTab('matches')">Matches</button>
+        </nav>
+
+        <!-- Survey Modal -->
+        <div id="surveyModal" class="modal">
+            <div class="modal-content">
+                <h2>Welcome to SocialTech!</h2>
+                <p>Before you start connecting, please help us understand youth connection challenges by completing this quick survey.</p>
+                <form id="surveyForm">
+                    <div class="question">
+                        <label>What's your biggest challenge in making genuine connections?</label>
+                        <select name="challenge" required>
+                            <option value="">Select an option</option>
+                            <option value="social-anxiety">Social anxiety</option>
+                            <option value="time-constraints">Lack of time</option>
+                            <option value="shallow-interactions">Conversations feel shallow</option>
+                            <option value="trust-issues">Trust issues</option>
+                            <option value="different-interests">Hard to find people with similar interests</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <label>How often do you feel lonely?</label>
+                        <select name="loneliness" required>
+                            <option value="">Select frequency</option>
+                            <option value="never">Never</option>
+                            <option value="rarely">Rarely</option>
+                            <option value="sometimes">Sometimes</option>
+                            <option value="often">Often</option>
+                            <option value="always">Always</option>
+                        </select>
+                    </div>
+
+                    <div class="question">
+                        <label>What would help you connect better with others?</label>
+                        <textarea name="suggestions" placeholder="Share your thoughts..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Complete Survey & Continue</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Profile Tab -->
+        <div id="profile" class="tab-content active">
+            <h2>Your Profile</h2>
+            <form id="profileForm">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Age</label>
+                    <input type="number" name="age" min="16" max="30" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Bio</label>
+                    <textarea name="bio" placeholder="Tell us about yourself..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Interests (select up to 5)</label>
+                    <div class="interests-grid">
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="music">
+                            <span>Music</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="sports">
+                            <span>Sports</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="reading">
+                            <span>Reading</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="movies">
+                            <span>Movies</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="gaming">
+                            <span>Gaming</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="travel">
+                            <span>Travel</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="cooking">
+                            <span>Cooking</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="art">
+                            <span>Art</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn-primary">Save Profile</button>
+            </form>
+        </div>
+
+        <!-- Discover Tab -->
+        <div id="discover" class="tab-content">
+            <h2>Discover People</h2>
+            <div id="cardStack">
+                <div class="profile-card">
+                    <h3>Loading profiles...</h3>
+                    <p>Please create your profile first!</p>
+                </div>
+            </div>
+            <div class="swipe-buttons">
+                <button class="btn-reject" onclick="swipe('reject')">Pass</button>
+                <button class="btn-like" onclick="swipe('like')">Like</button>
+            </div>
+        </div>
+
+        <!-- Matches Tab -->
+        <div id="matches" class="tab-content">
+            <h2>Your Matches</h2>
+            <div id="matchesList">
+                <p>No matches yet. Keep swiping!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="add-sample-users.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
